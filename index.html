@@ -102,9 +102,7 @@
 
     <section id="chat" class="hidden">
         <h2>Chat</h2>
-        <div id="chatbox"></div>
-        <input type="text" id="chatInput" placeholder="Napisz wiadomość...">
-    </section>
+        <script type="text/javascript" src="https://www.shoutboxy.pl/shoutbox/start.php?key=746701168"></script>
 </main>
 
 <footer>
@@ -112,26 +110,7 @@
 </footer>
 
 <script>
-    const navigatePage = () => {
-        const sections = document.querySelectorAll('main section');
-        const selectedPage = document.getElementById('pageSelect').value;
-
-        sections.forEach(section => {
-            section.classList.add('hidden');
-        });
-
-        document.getElementById(selectedPage).classList.remove('hidden');
-    };
-
-    const chatbox = document.getElementById('chatbox');
-    const chatInput = document.getElementById('chatInput');
-
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && chatInput.value.trim()) {
-            const newMessage = document.createElement('div');
-            newMessage.textContent = chatInput.value;
-            chatbox.appendChild(newMessage);
-            chatInput.value = '';
+    
         }
     });
 </script>
