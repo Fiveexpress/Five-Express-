@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Express - Oficjalna strona Gazetki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6e6e6e, #bfbfbf);
+            color: black;
+        }
+
+        header {
+            background-color: #4a4a4a;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        nav select {
+            background-color: #8a8a8a;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #4a4a4a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #chat {
+            background: white;
+            color: black;
+            border-radius: 10px;
+            padding: 10px;
+            width: 80%;
+            margin: 0 auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #chat input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #8a8a8a;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Five Express Logo">
+    <nav>
+        <select id="pageSelect" onchange="navigatePage()">
+            <option value="home">Strona Główna</option>
+            <option value="magazines">Pobierz wydania gazetki</option>
+            <option value="chat">Chat</option>
+        </select>
+    </nav>
+</header>
+
+<main id="content">
+    <section id="home">
+        <h2>Witamy na oficjalnej stronie gazetki Five Express!</h2>
+        <p>Czytaj nasze gazetki, odkrywaj różne ciekawostki i przepisy i dziel się swoimi pomysłami do następnych numerów gazetki na chacie.</p>
+    </section>
+
+    <section id="magazines" class="hidden">
+        <h2>Pobierz wydania gazetki</h2>
+        <p>Kliknij poniżej, aby pobrać różne wydania gazetki:</p>
+        <ul>
+            <li><a href="Five Expres Miesięcznik Wydanie listopadowe 2024.pdf" download>Wydanie listopadowe 2024</a></li>
+        </ul>
+    </section>
+
+    <section id="chat" class="hidden">
+        <h2>Chat</h2>
+        <div id="chatbox"></div>
+        <input type="text" id="chatInput" placeholder="Napisz wiadomość...">
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Five Express. Wszystkie prawa zastrzeżone.</p>
+</footer>
+
+<script>
+    const navigatePage = () => {
+        const sections = document.querySelectorAll('main section');
+        const selectedPage = document.getElementById('pageSelect').value;
+
+        sections.forEach(section => {
+            section.classList.add('hidden');
+        });
+
+        document.getElementById(selectedPage).classList.remove('hidden');
+    };
+
+    const chatbox = document.getElementById('chatbox');
+    const chatInput = document.getElementById('chatInput');
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && chatInput.value.trim()) {
+            const newMessage = document.createElement('div');
+            newMessage.textContent = chatInput.value;
+            chatbox.appendChild(newMessage);
+            chatInput.value = '';
+        }
+    });
+</script>
+
+</body>
+</html>
+
